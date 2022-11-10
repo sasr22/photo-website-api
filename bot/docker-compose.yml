@@ -1,0 +1,12 @@
+version: '3.8'
+
+name: photo
+
+services:
+  worker:
+    build:
+      target: worker
+      context: ./
+    restart: unless-stopped
+    env_file:
+      - .env

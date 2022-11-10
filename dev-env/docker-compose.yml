@@ -1,0 +1,29 @@
+version: '3.8'
+
+name: photo
+
+services:
+  rabbit:
+    image: rabbitmq:3
+    restart: unless-stopped
+    expose:
+      - 5672
+  s3:
+    image: minio/minio
+    restart: unless-stopped
+    command: "minio server /data --console-address \":9001\""
+    ports:
+      - 9000:9000
+      - 9001:9001
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+  db:
+    image: postgres:14.5-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "54322:5432"
+    expose:
+      - 5432

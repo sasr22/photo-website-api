@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+
+<body>
+
+    <section>
+        <form action="/delete" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <label>
+                Email:
+                <input type="email" name="email">
+            </label>
+            <button type="submit">
+                Submit
+            </button>
+        </form>
+    </section>
+
+    <a href="/change">Click here to change the token/ip</a>
+    <a href="/">Click here to go back to home page</a>
+
+    {% if msgs %}
+    <ul>
+        {% for msg in msgs %}
+        <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+version: '3.8'
+
+name: photo
+
+services:
+  email-worker:
+    build:
+      target: email-worker
+      context: ./
+    restart: unless-stopped
+    env_file:
+      - .env

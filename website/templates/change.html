@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change</title>
+</head>
+
+<body>
+
+    <section>
+        Here you can change your IP and reset your token
+
+        <form action="/change" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <label>
+                Email:
+                <input type="email" name="email">
+            </label>
+            <label>
+                Whitelist IPv4 (Defaults to your IPv4 address):
+                <input type="text" name="ip" value="{{remote_ip}}">
+            </label>
+            <button type="submit">
+                Submit
+            </button>
+        </form>
+    </section>
+
+    <a href="/">Click here to go back to home page</a>
+    <a href="/delete">Click here to delete your email</a>
+
+    {% if msgs %}
+    <ul>
+        {% for msg in msgs %}
+        <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+</body>
+
+</html>
