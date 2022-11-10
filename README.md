@@ -10,4 +10,4 @@ To use this website locally:
 8. Format of the api request: ```http://localhost/screenshot?url=http://google.com&format=png&timeout=0&uuid=API_KEY```
 
 Allowed formats: png, webp, jpg.
-Parameter timeout is optional and can be a integer value between 0 and 20.
+Parameter timeout is optional and can be a integer value between 0 and 20, default is 5.
